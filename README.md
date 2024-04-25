@@ -11,7 +11,7 @@ Ce projet est un service d'authentification en Node.js conçu pour fournir des f
 
 ## Configuration requise
 
-- Node.js
+- Node.js v20.10.0
 - PostgreSQL
 
 ## Installation
