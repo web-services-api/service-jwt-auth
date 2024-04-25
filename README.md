@@ -16,30 +16,16 @@ Ce projet est un service d'authentification en Node.js conçu pour fournir des f
 
 ## Installation
 
-1. Clonez ce dépôt sur votre machine locale :
-
-git clone <URL_DU_REPO>
-
-2. Accédez au répertoire du projet :
-
-cd nom_du_projet
-
-3. Installez les dépendances npm :
-
+1. Installez les dépendances npm :
+```bash
 npm install
+```
 
-4. Configurez les variables d'environnement en créant un fichier `.env` à la racine du projet et en y ajoutant les informations de connexion à la base de données PostgreSQL :
+2. Démarrez le serveur :
 
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=nom_de_votre_base_de_données
-DB_USERNAME=votre_nom_utilisateur
-DB_PASSWORD=votre_mot_de_passe
-
-5. Démarrez le serveur :
-
+```bash
 npm start
+```
 
 ## Utilisation
 
