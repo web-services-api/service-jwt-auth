@@ -1,6 +1,6 @@
 module.exports = {
-    accessTokenSecret: 'your_access_token_secret',
-    refreshTokenSecret: 'your_refresh_token_secret',
+    accessTokenSecret: process.env.ACCESS_TOKEN_SECRET,
+    refreshTokenSecret: process.env.REFRESH_TOKEN_SECRET,
     dbConfig: {
       user: process.env.DB_USERNAME,
       host: process.env.DB_HOST,
