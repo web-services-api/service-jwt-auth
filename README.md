@@ -24,7 +24,7 @@ npm install
 2. Démarrez le serveur :
 
 ```bash
-npm start
+node app.js
 ```
 
 ## Utilisation
