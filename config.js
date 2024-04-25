@@ -10,10 +10,10 @@ module.exports = {
   accessTokenSecret: generateRandomString(64),
   refreshTokenSecret: generateRandomString(64),
   dbConfig: {
-    user: process.env.DB_USERNAME,
+    user: "root",
     host: process.env.DB_HOST,
-    database: process.env.DB_DATABASE,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
+    database: "movies",
+    password: "root",
+    port: 5430,
   },
 };

@@ -1,14 +1,15 @@
 const { Pool } = require('pg');
 const config = require('../config');
+const bcrypt = require('bcrypt');
 
 const pool = new Pool(config.dbConfig);
 
 const createUser = async (req, res) => {
   const client = await pool.connect();
   try {
-    const { username, password } = req.body;
+    const { name, password, email } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
-    const result = await client.query('INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *', [username, hashedPassword]);
+    const result = await client.query('INSERT INTO users (name, password, email) VALUES ($1, $2, $3) RETURNING *', [name, hashedPassword, email]);
     res.json({ message: 'User created successfully', user: result.rows[0] });
   } catch (error) {
     console.error('Error creating user:', error);
