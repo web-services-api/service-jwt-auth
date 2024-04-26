@@ -28,12 +28,11 @@ node app.js
 ```
 
 ## Routes
-
-POST /create
-POST /login
-POST /login/refresh-token
-GET  /users
-PUT  /users/update
+- `POST /create`: Creater User.
+- `POST /login`: Login as user.
+- `POST /login/refresh-token`: Refresh access token.
+- `POST /users`: Get user.
+- `POST /users/update`: RUpdate user.
 
 ## Utilisation
 
