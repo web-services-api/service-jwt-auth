@@ -27,11 +27,19 @@ npm install
 node app.js
 ```
 
+## Routes
+
+POST /create
+POST /login
+POST /login/refresh-token
+GET  /users
+PUT  /users/update
+
 ## Utilisation
 
 1. Pour vous connecter, envoyez une requête HTTP POST à `/login` avec le nom d'utilisateur et le mot de passe dans le corps de la requête.
 2. Le service générera un jeton d'accès et un jeton de rafraîchissement que vous pourrez utiliser pour accéder aux routes protégées.
-3. Pour accéder à une route protégée, ajoutez le jeton d'accès dans l'en-tête de la requête comme suit : `Authorization: Bearer <votre_jetondacces>`
+3. Pour accéder à une route protégée, ajoutez le jeton d'accès dans l'en-tête de la requête comme suit : `Authorization : <YOUR_TOKEN>`
 4. Pour renouveler le jeton d'accès, envoyez une requête HTTP POST à `/refresh-token` avec le jeton de rafraîchissement dans le corps de la requête.
 
 ## Licence
