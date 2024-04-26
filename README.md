@@ -32,7 +32,7 @@ node app.js
 - `POST /login`: Login as user.
 - `POST /login/refresh-token`: Refresh access token.
 - `POST /users`: Get user.
-- `POST /users/update`: RUpdate user.
+- `POST /users/update`: Update user.
 
 ## Utilisation
 
