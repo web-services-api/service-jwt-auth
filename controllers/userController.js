@@ -22,7 +22,8 @@ const createUser = async (req, res) => {
 const getUser = async (req, res) => {
   const client = await pool.connect();
   try {
-    const result = await client.query('SELECT * FROM users WHERE name = $1', [req.user.name]);
+    const userID = req.params.id;
+    const result = await client.query('SELECT * FROM users WHERE id = $1', [userID]);
     if (result.rows.length > 0) {
       res.json(result.rows[0]);
     } else {
@@ -39,9 +40,11 @@ const getUser = async (req, res) => {
 const updateUser = async (req, res) => {
   const client = await pool.connect();
   try {
-    const { id, name, email, newPassword } = req.body;
+    const userID = req.params.id;
+    const { name, email, newPassword } = req.body;
+    console.log(userID);
     const hashedPassword = await bcrypt.hash(newPassword, 10);
-    const result = await client.query('UPDATE users SET name = $2, email = $3, password = $4 WHERE id = $1 RETURNING *', [id, name, email, hashedPassword]);
+    const result = await client.query('UPDATE users SET name = $2, email = $3, password = $4 WHERE id = $1 RETURNING *', [userID, name, email, hashedPassword]);
     if (result.rows.length > 0) {
       res.json({ message: 'User updated successfully', user: result.rows[0] });
     } else {

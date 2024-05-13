@@ -20,9 +20,8 @@ app.use(limiter);
 const authRoutes = require('./routes/auth');
 const userRoutes = require('./routes/user');
 
-app.use('/login', authRoutes);
-app.use('/refresh-token', authRoutes);
-app.use('/users', userRoutes);
+app.use('/api', authRoutes);
+app.use('/api/account', userRoutes);
 
 // Protected route
 app.use('/user', authMiddleware.authenticateToken, userRoutes);

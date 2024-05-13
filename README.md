@@ -28,18 +28,19 @@ node app.js
 ```
 
 ## Routes
-- `POST /create`: Creater User.
-- `POST /login`: Login as user.
-- `POST /login/refresh-token`: Refresh access token.
-- `POST /users`: Get user.
-- `POST /users/update`: Update user.
+- `POST /api/token`: Login as user & get access token.
+- `GET /api/validate/{token}`: Check if access token is still available.
+- `POST /api/refresh-token`: Refresh access token.
+- `POST /api/account`: Creater User.
+- `GET /api/account/{id}`: Get user.
+- `PUT /api/account/{id}`: Update user.
 
 ## Utilisation
 
-1. Pour vous connecter, envoyez une requête HTTP POST à `/login` avec le nom d'utilisateur et le mot de passe dans le corps de la requête.
+1. Pour vous connecter, envoyez une requête HTTP POST à `/api/token` avec le nom d'utilisateur et le mot de passe dans le corps de la requête.
 2. Le service générera un jeton d'accès et un jeton de rafraîchissement que vous pourrez utiliser pour accéder aux routes protégées.
 3. Pour accéder à une route protégée, ajoutez le jeton d'accès dans l'en-tête de la requête comme suit : `Authorization : <YOUR_TOKEN>`
-4. Pour renouveler le jeton d'accès, envoyez une requête HTTP POST à `/refresh-token` avec le jeton de rafraîchissement dans le corps de la requête.
+4. Pour renouveler le jeton d'accès, envoyez une requête HTTP POST à `/api/refresh-token` avec le jeton de rafraîchissement dans le corps de la requête.
 
 ## Licence
 
