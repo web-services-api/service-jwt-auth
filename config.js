@@ -12,7 +12,7 @@ module.exports = {
   dbConfig: {
     user: "root",
     host: process.env.DB_HOST,
-    database: "movies",
+    database: "preprod_movies",
     password: "root",
     port: 5430,
   },

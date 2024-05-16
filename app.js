@@ -23,9 +23,6 @@ const userRoutes = require('./routes/user');
 app.use('/api', authRoutes);
 app.use('/api/account', userRoutes);
 
-// Protected route
-app.use('/user', authMiddleware.authenticateToken, userRoutes);
-
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

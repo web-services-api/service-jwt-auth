@@ -29,8 +29,8 @@ node app.js
 
 ## Routes
 - `POST /api/token`: Login as user & get access token.
-- `GET /api/validate/{token}`: Check if access token is still available.
-- `POST /api/refresh-token`: Refresh access token.
+- `GET /api/validate/{acessToken}`: Check if access token is still available.
+- `POST /api/refresh-token/{refreshToken}/token`: Refresh access token.
 - `POST /api/account`: Creater User.
 - `GET /api/account/{id}`: Get user.
 - `PUT /api/account/{id}`: Update user.
