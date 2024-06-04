@@ -41,6 +41,7 @@ node app.js
 2. Le service générera un jeton d'accès et un jeton de rafraîchissement que vous pourrez utiliser pour accéder aux routes protégées.
 3. Pour accéder à une route protégée, ajoutez le jeton d'accès dans l'en-tête de la requête comme suit : `Authorization : <YOUR_TOKEN>`
 4. Pour renouveler le jeton d'accès, envoyez une requête HTTP POST à `/api/refresh-token` avec le jeton de rafraîchissement dans le corps de la requête.
+5. La base de donnée utilisée et celle du projet suivant : https://github.com/web-services-api/rest-api-movies.git
 
 ## Licence
 
