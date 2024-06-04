@@ -42,6 +42,7 @@ node app.js
 3. Pour accéder à une route protégée, ajoutez le jeton d'accès dans l'en-tête de la requête comme suit : `Authorization : <YOUR_TOKEN>`
 4. Pour renouveler le jeton d'accès, envoyez une requête HTTP POST à `/api/refresh-token` avec le jeton de rafraîchissement dans le corps de la requête.
 5. La base de donnée utilisée et celle du projet suivant : https://github.com/web-services-api/rest-api-movies.git
+6. Un fichier de test importable dans postman pour tester les routes est trouvable dans le dossier "postman"
 
 ## Licence
 
