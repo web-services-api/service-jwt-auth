@@ -8,12 +8,5 @@ const generateRandomString = (length) => {
 
 module.exports = {
   accessTokenSecret: generateRandomString(64),
-  refreshTokenSecret: generateRandomString(64),
-  dbConfig: {
-    user: "root",
-    host: process.env.DB_HOST,
-    database: "preprod_movies",
-    password: "root",
-    port: 5430,
-  },
+  refreshTokenSecret: generateRandomString(64)
 };
