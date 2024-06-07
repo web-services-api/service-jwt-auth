@@ -1,8 +1,10 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const config = require('../config');
-const Users = require('../models/users');
-const Token = require('../models/token');
+const Users = require('../models').User;
+const Token = require('../models').Token;
+
+const { sequelize } = require('../models/index')
 
 const generateAccessToken = (name, userID) => {
   return jwt.sign({ name, userID }, config.accessTokenSecret, { expiresIn: '60m' });
@@ -77,7 +79,6 @@ const refreshToken = async (req, res) => {
 
 const validateAccessToken = (req, res) => {
   const accessToken = req.params.accessToken;
-  console.log(req.body)
   if (!accessToken) return res.sendStatus(401);
 
   jwt.verify(accessToken, config.accessTokenSecret, (err, decoded) => {

@@ -1,44 +1,44 @@
-const {
-  Model
-} = require('sequelize');
+'use strict';
+const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Token extends Model {
+  class User extends Model {
     static associate(models) {
       // define association here
-      this.belongsTo(models.User, {
-        foreignKey: 'user_id',
+      this.belongsTo(models.Role, {
+        foreignKey: 'role_id',
       });
     }
   }
-  Token.init({
+  User.init({
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
       defaultValue: DataTypes.UUIDV4,
     },
-    user_id: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: 'users',
-        key: 'id',
-      },
-    },
-    access_token: {
-      type: DataTypes.TEXT,
+    name: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    refresh_token: {
-      type: DataTypes.TEXT,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: true,
+    },
+    email_verified_at: {
+      type: DataTypes.DATE,
       allowNull: true,
     },
-    access_token_expiry: {
-      type: DataTypes.DATE,
+    password: {
+      type: DataTypes.STRING,
       allowNull: false,
     },
-    refresh_token_expiry: {
-      type: DataTypes.DATE,
+    role_id: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
+    remember_token: {
+      type: DataTypes.STRING,
       allowNull: true,
     }
   }, {
@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     createdAt: 'created_at', // Customize createdAt column name
     updatedAt: 'updated_at', // Customize updatedAt column name
-    tableName: 'tokens',
+    tableName: 'users',
   });
-  return Token;
+  return User;
 };

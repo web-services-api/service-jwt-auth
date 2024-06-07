@@ -24,12 +24,12 @@ npm install
 2. Démarrez le serveur :
 
 ```bash
-node app.js
+npm run start
 ```
 
 ## Routes
 - `POST /api/token`: Login as user & get access token.
-- `GET /api/validate/{acessToken}`: Check if access token is still available.
+- `GET /api/validate/{accessToken}`: Check if access token is still available.
 - `POST /api/refresh-token/{refreshToken}/token`: Refresh access token.
 - `POST /api/account`: Creater User.
 - `GET /api/account/{id}`: Get user.

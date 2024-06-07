@@ -1,13 +1,15 @@
 const bcrypt = require('bcrypt');
-const Users = require('../models/users');
-const Roles = require('../models/roles');
+const User = require('../models').User;
+const Role = require('../models').Role;
+
+const { sequelize } = require('../models/index')
 
 const createUser = async (req, res) => {
   try {
     const userRole = req.body.role;
     if (req.user) {
       const userID = req.user.userID;
-      const user = await Users.findByPk(userID);
+      const user = await User.findByPk(userID);
 
       if (userRole !== "ROLE_USER" && user.role !== "ROLE_ADMIN") {
         return res.status(403).json({ message: 'Unauthorized to create account with this role' });
@@ -23,17 +25,17 @@ const createUser = async (req, res) => {
 
     let roleId;
     if (role) {
-      const roleData = await Roles.findOne({ where: { name: role } });
+      const roleData = await Role.findOne({ where: { name: role } });
       if (!roleData) {
         return res.status(400).json({ message: 'Role not found' });
       }
       roleId = roleData.id;
     } else {
-      const defaultRole = await Roles.findOne({ where: { name: 'ROLE_USER' } });
+      const defaultRole = await Role.findOne({ where: { name: 'ROLE_USER' } });
       roleId = defaultRole.id;
     }
 
-    const newUser = await Users.create({
+    const newUser = await User.create({
       name,
       password: hashedPassword,
       email,
@@ -89,13 +91,13 @@ const getTargetUser = async (req, res) => {
   const targetUserId = req.params.id;
   const ownUserId = req.user.userID;
 
-  const ownUser = await Users.findByPk(ownUserId);
+  const ownUser = await User.findByPk(ownUserId);
   if (!ownUser) {
     return res.status(404).json({ message: 'User not found' });
   }
 
   if (ownUser.role === 'ROLE_ADMIN' || ownUserId === targetUserId) {
-    const targetUser = await Users.findByPk(targetUserId);
+    const targetUser = await User.findByPk(targetUserId);
     if (!targetUser) {
       return res.status(404).json({ message: 'User target not found' });
     }

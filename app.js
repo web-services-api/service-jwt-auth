@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const sequelize = require('./db');
 
 const app = express();
 
@@ -27,19 +26,9 @@ app.use('/api/account', userRoutes);
 
 const PORT = 3000;
 
-// Import models to ensure they are loaded
-const Users = require('./models/users');
-const Roles = require('./models/roles');
-const Token = require('./models/token');
-
 // Synchronize the database and then start the server
-sequelize.sync({ force: false }) // { force: true } will drop and recreate tables
-  .then(() => {
-    console.log('Database & tables created!');
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch(err => {
-    console.error('Error syncing database:', err);
-  });
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+}).on('error', err => {
+  console.error('Error during database synchronization:', err);
+});
